@@ -4,3 +4,6 @@ docker-compose.override.yml
 .cloneignore
 Jenkinsfile*
 /clone*
+
+# Ignore all env files
+.env*
