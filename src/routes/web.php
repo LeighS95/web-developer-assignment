@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ExportController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +16,5 @@
 Route::redirect("/", "/books");
 
 Route::resource('books', 'BooksController');
+
+Route::get('export', [ExportController::class, 'export']);

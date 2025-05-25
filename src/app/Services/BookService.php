@@ -8,6 +8,18 @@ use Illuminate\Database\Eloquent\Collection;
 class BookService
 {
     /**
+     * Get data to export
+     * 
+     * @return array
+     */
+    public function getExportData(array $columns)
+    {
+        $data = Book::all($columns);
+
+        return $data->toArray();
+    }
+
+    /**
      * Get a list of Books
      * 
      * @return Collection

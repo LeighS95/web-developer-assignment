@@ -13,6 +13,8 @@
 
         @include('partials._addForm')
 
+        @include('partials._export')
+
         @include('partials._booksTable')
     </div>
 
