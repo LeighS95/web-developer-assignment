@@ -74,6 +74,8 @@
 
         <div>
             <form action="{{ route('books.store') }}" method="POST">
+                @csrf
+
                 <label for="author">Author Name</label>
 
                 <input id="author" name="author" type="text" class="@error('author') is-invalid @enderror">

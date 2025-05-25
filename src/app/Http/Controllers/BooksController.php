@@ -41,7 +41,18 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        try {
+            $valiated = $request->validate([
+                'title' => 'required',
+                'author' => 'required',
+            ]);
+
+            Book::create($valiated);
+
+            return redirect()->back()->with('success', 'New book added.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->with('error', 'Failed to add book');
+        }
     }
 
     /**
