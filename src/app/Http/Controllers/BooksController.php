@@ -16,12 +16,17 @@ class BooksController extends Controller
     public function index(Request $request)
     {
         $search = $request->query('search');
+        $sortOption = $request->query('sort');
         $query = Book::query();
 
         if ($search) {
             $query
                 ->where('title', 'like', "%{$search}%")
                 ->orWhere('author', 'like', "%{$search}%");
+        }
+
+        if ($sortOption) {
+            $query->orderBy($sortOption);
         }
 
         $books = $query->get();

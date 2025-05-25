@@ -1,8 +1,14 @@
 <table>
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Author</th>
+            <th>
+                Title
+                <a href="?sort=title"><span>&#8645;</span></a>
+            </th>
+            <th>
+                Author
+                <a href="?sort=author"><span>&#8645;</span></a>
+            </th>
             <th>Delete</th>
         </tr>
     </thead>
