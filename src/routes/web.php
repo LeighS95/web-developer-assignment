@@ -11,4 +11,6 @@
 |
 */
 
+Route::redirect("/", "/books");
+
 Route::resource('books', 'BooksController');
