@@ -124,9 +124,9 @@
                     <tr>
                         <td>{{ $book->title }}</td>
                         <td>
-                            <button onclick="modal.show()">{{ $book->author }}</button>
+                            <button onclick="modal{{ $book->id }}.show()">{{ $book->author }}</button>
 
-                            <dialog id="modal">
+                            <dialog id="modal{{ $book->id}}">
                                 <form method="POST" action="books/{{ $book->id }}">
                                     @csrf
                                     @method('PUT')
@@ -140,7 +140,7 @@
                                     </button>
                                 </form>
 
-                                <button onclick="modal.close()">Cancel</button>
+                                <button onclick="modal{{ $book->id }}.close()">Cancel</button>
                             </dialog>
                         </td>
                         <td class="deleteButton">
