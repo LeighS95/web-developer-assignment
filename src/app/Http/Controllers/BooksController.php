@@ -87,6 +87,11 @@ class BooksController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $book = Book::find($id);
+
+        $book->update(['author' => $request['author']]);
+
+        return redirect()->back()->with('message', 'Author has been edited successfully');
     }
 
     /**

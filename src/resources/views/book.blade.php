@@ -108,8 +108,6 @@
             </form>
         </div>
 
-        @section('content')
-
         <table>
             <thead>
                 <tr>
@@ -125,7 +123,26 @@
                 @foreach ($books as $book)
                     <tr>
                         <td>{{ $book->title }}</td>
-                        <td><a href="/books/author/{{ $book->author }}">{{ $book->author }}</a></td>
+                        <td>
+                            <button onclick="modal.show()">{{ $book->author }}</button>
+
+                            <dialog id="modal">
+                                <form method="POST" action="books/{{ $book->id }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <label for='change-name'>
+                                        Change Author's Name
+                                    </label>
+                                    <input id='change-name' name='author' />
+
+                                    <button type="submit">
+                                        submit
+                                    </button>
+                                </form>
+
+                                <button onclick="modal.close()">Cancel</button>
+                            </dialog>
+                        </td>
                         <td class="deleteButton">
                             <form method="POST" action="/books/{{ $book->id }}">
                                 @csrf
