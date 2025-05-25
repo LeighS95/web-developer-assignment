@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBookRequest;
+use App\Services\BookService;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -13,25 +15,14 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, BookService $service)
     {
         $search = $request->query('search');
         $sortOption = $request->query('sort');
-        $query = Book::query();
 
-        if ($search) {
-            $query
-                ->where('title', 'like', "%{$search}%")
-                ->orWhere('author', 'like', "%{$search}%");
-        }
+        $books = $service->getBookList($search, $sortOption);
 
-        if ($sortOption) {
-            $query->orderBy($sortOption);
-        }
-
-        $books = $query->get();
-
-        return view('book', compact('books'));
+        return view('book', compact('books', 'search'));
     }
 
     /**
@@ -47,20 +38,15 @@ class BooksController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StoreBookRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request, BookService $service)
     {
         try {
-            $valiated = $request->validate([
-                'title' => 'required',
-                'author' => 'required',
-            ]);
+            $service->storeNewBook($request->all());
 
-            Book::create($valiated);
-
-            return redirect()->back()->with('success', 'New book added.');
+            return redirect('/books')->with('success', 'New book added.');
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Failed to add book');
         }
