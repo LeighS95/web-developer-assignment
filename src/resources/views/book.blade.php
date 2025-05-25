@@ -55,11 +55,17 @@
             border: 1px solid #000;
             border-radius: 4px;
             width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
         }
 
         th,
         td {
             padding: 4px;
+            border: 1px solid #000;
         }
     </style>
 </head>
@@ -120,7 +126,15 @@
                     <tr>
                         <td>{{ $book->title }}</td>
                         <td><a href="/books/author/{{ $book->author }}">{{ $book->author }}</a></td>
-                        <td class="deleteButton"><a href="/books/delete/{{ $book->id }}">X</a></td>
+                        <td class="deleteButton">
+                            <form method="POST" action="/books/{{ $book->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="button red">
+                                    X
+                                </button>
+                            </form>
+                        </td>
                     <tr>
                 @endforeach
             </tbody>
