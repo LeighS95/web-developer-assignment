@@ -20,6 +20,6 @@ class ExporterFactory
             return new XMLExporter();
         }
 
-        throw new \Exception("Unsupported format: " . $format);
+        throw new InvalidArgumentException("Unsupported format: " . $format);
     }
 }
