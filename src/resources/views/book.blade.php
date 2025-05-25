@@ -9,6 +9,8 @@
             </div>
         </div>
 
+        @include('partials._search')
+
         @include('partials._addForm')
 
         @include('partials._booksTable')

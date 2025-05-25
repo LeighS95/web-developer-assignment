@@ -13,10 +13,16 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->query('search');
         $query = Book::query();
+
+        if ($search) {
+            $query
+                ->where('title', 'like', "%{$search}%")
+                ->orWhere('author', 'like', "%{$search}%");
+        }
 
         $books = $query->get();
 
