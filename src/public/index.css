@@ -1,0 +1,147 @@
+:root {
+    /* colors */
+    --black: #000;
+    --text-color: rgba(0, 0, 0, 0.8);
+
+    --color-info: #106ac9;
+    --color-success: #22b329;
+    --color-warning: #cc9618;
+    --color-error: #eb1010;
+
+    /* Surface colors */
+    --surface: #fafafa;
+
+    /* font sizes */
+    --font-xxs: 0.625rem;
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-lg: 1.125rem;
+    --font-xl: 1.25rem;
+    --font-base: 1rem;
+
+    /* font weights */
+    --weight-thin: 300;
+    --weight-bold: 600;
+
+    /* Radius */
+    --radius-sm: 4px;
+    --radius-full: 100%;
+    --fadius-pill: 999px;
+
+    /* spacing */
+    --spacing-base: 4px;
+    --spacing-xxs: calc(var(--spacing-base) / 2);
+    --spacing-xs: var(--spacing-base);
+    --spacing-sm: calc(var(--spacing-base) * 2);
+    --spacing-md: calc(var(--spacing-base) * 3);
+    --spacing-lg: calc(var(--spacing-base) * 4);
+    --spacing-xl: calc(var(--spacing-base) * 5);
+}
+
+html,
+body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+table {
+    border: 1px solid #000;
+    border-radius: 4px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+}
+
+th,
+td {
+    padding: 4px;
+    border: 1px solid #000;
+}
+
+/* Classes */
+
+.header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--surface);
+}
+
+.logo {
+    color: var(--black);
+    font-size: var(--font-xl);
+    font-weight: var(--weight-bold);
+    text-decoration: none;
+}
+
+.content {
+    margin: 0 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--surface);
+}
+
+.add_book_form {
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-lg);
+    background: var(--surface);
+    max-width: 980px;
+}
+
+/* Utility classes */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.flex-center {
+    margin: 0 32px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.success-message {
+    color: var(--color-success);
+    font-size: var(--font-sm);
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: var(--font-sm);
+}
