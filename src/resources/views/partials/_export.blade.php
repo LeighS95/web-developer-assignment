@@ -1,9 +1,13 @@
-<button onclick="exportModal.show()">
-    Export
+<button class="export_button" onclick="exportModal.show()">
+    &#11123; Export
 </button>
 
 <dialog id="exportModal">
-    <form action="/export" method="GET">
+    <div class="export_dialog_header">
+        <button class="export_button_close" onclick="exportModal.close()">&#120;</button>
+    </div>
+
+    <form class="export_form" action="/export" method="GET">
         <fieldset>
             <label for="authors">Authors</label>
             <input id="authors" name="columns" type="radio" value="author" />
@@ -20,6 +24,6 @@
             <input id="xml" name="format" type="radio" value="xml" />
         </fieldset>
 
-        <button type="submit">Export</button>
+        <button class="export_button" type="submit">Export</button>
     </form>
 </dialog>

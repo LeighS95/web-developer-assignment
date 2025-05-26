@@ -2,20 +2,16 @@
 
 @section('content')
 
-    <div class="full-height full-width">
-        <div class="content">
-            <div class="title m-b-md">
-                Books
-            </div>
-        </div>
-
+    <section style="padding-block: 16px;">
         @include('partials._search')
+    </section>
 
+    <section style="padding-block: 16px;">
         @include('partials._addForm')
+    </section>
 
-        @include('partials._export')
-
+    <section style="padding-block: 16px;">
         @include('partials._booksTable')
-    </div>
+    </section>
 
 @endsection

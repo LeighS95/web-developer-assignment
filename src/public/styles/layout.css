@@ -1,0 +1,27 @@
+.header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--surface);
+}
+
+.logo {
+    color: var(--black);
+    font-size: var(--font-xl);
+    font-weight: var(--weight-bold);
+    text-decoration: none;
+}
+
+.content {
+    margin: 0 var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--surface);
+}

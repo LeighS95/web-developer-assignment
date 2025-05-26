@@ -10,7 +10,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href={{ asset('index.css') }}>
+    <link rel="stylesheet" href={{ asset('styles/index.css') }}>
+    <link rel="stylesheet" href={{ asset('styles/layout.css') }}>
+    <link rel="stylesheet" href={{ asset('styles/partials/addForm.css') }}>
+    <link rel="stylesheet" href={{ asset('styles/partials/booksTable.css') }}>
+    <link rel="stylesheet" href={{ asset('styles/partials/export.css') }}>
+    <link rel="stylesheet" href={{ asset('styles/partials/search.css') }}>
 </head>
 
 <body>
@@ -19,7 +24,9 @@
     </header>
 
     <main class="content">
-        @yield('content')
+        <div style="max-width: 840px; width: 100%; margin: 0 auto;">
+            @yield('content')
+        </div>
     </main>
 
     <footer class="footer">
