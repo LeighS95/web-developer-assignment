@@ -3,6 +3,7 @@
 namespace Tests\Feature\Controllers;
 
 use App\Book;
+use App\Services\BookService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -50,13 +51,33 @@ class BookControllerTest extends TestCase
         $this->assertDatabaseHas('books', ['title' => 'New Book', 'author' => 'Test Author']);
     }
 
-    public function test_store_handles_exception()
+    public function test_store_handles_errors()
     {
         // Simulate failure by omitting required fields
         $response = $this->from('/books')->post('/books', []);
 
         $response->assertRedirect('/books');
         $response->assertSessionHasErrors(['title', 'author']);
+    }
+
+    public function test_store_handles_exception()
+    {
+        // Mock BookService to throw an exception
+        $this->mock(BookService::class, function ($mock) {
+            $mock
+                ->shouldReceive('storeNewBook')
+                ->once()
+                ->andThrow(new \Exception('Simulated failure'));
+        });
+
+        $response = $this->from('/books')->post('/books', [
+            'title' => 'Invalid Book',
+            'author' => 'Unknown Author',
+        ]);
+
+        $response->assertRedirect('/books');
+        $response->assertSessionHas('error', 'Failed to add book');
+        $response->assertSessionHasInput(['title' => 'Invalid Book', 'author' => 'Unknown Author']);
     }
 
     public function test_update_edits_book_author()

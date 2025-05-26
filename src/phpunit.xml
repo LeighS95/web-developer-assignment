@@ -20,6 +20,13 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <!-- Uncomment for: Test coverage report for code I have implemented -->
+            <!-- <exclude>
+                <directory suffix=".php">./app/Console</directory>
+                <directory suffix=".php">./app/Providers</directory>
+                <directory suffix=".php">./app/Http/Middleware</directory>
+                <directory suffix=".php">./app/Http/Controllers/Auth</directory>
+            </exclude> -->
         </whitelist>
     </filter>
     <php>
