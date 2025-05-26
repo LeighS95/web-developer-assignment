@@ -10,3 +10,14 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+
+_css
+_icons
+_js
+Console
+Exceptions
+Http
+Factories
+Providers
+Services
