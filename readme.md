@@ -16,7 +16,7 @@ docker-compose exec laravel composer install
 ```
 4. Preform migratations by running:
 ```
-docker-compose exec laravel php artisan migrate:refresh
+docker-compose exec laravel php artisan migrate:refresh --seed
 ```
 5. Access the Laravel instance on `http://localhost`
 
